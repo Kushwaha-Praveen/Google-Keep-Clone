@@ -95,9 +95,7 @@ ul li{
     width: 400px;
     height: 400px;
     background-color: white;
-    margin-right: 5%;
-    margin-left: 1rem;
-    margin-top: 6rem;
+    margin: 20px;
     box-shadow: 10px 10px 10px #82b9f8;
 }
 .tool {
@@ -144,8 +142,8 @@ ul li{
 #mainsection {
     width: 100%;
     min-height: 100vh;
-    padding-bottom: 50px;
-    margin-right: 5000px;
+    min-width: 44vh;
+    padding-top: 75px;
     display: flex;
     flex-wrap: wrap;
 }
