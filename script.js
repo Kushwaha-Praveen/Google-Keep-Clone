@@ -1,12 +1,13 @@
  const NewNote = document.querySelector("#NewNote")
  const mainsection = document.querySelector("#mainsection")
-
+                                        //   NOTE BUTTON WORKING
  NewNote.addEventListener(
     "click",
     function() {
         New()
     }
  )
+                                        //  ADDING NEW NOTE
 
     const New = (text = "") => {
     const note = document.createElement("div");
@@ -23,7 +24,7 @@
     note.querySelector(".trash").addEventListener(
         "click",
         function() {
-            note.remove()
+            note.remove()   //DELETING A NOTE
             saving()
         }
     )
@@ -42,6 +43,7 @@
     mainsection.appendChild(note);
     saving()
  }
+                                         //  SAVING A NOTE
 
  const saving = () => {
     const notes = document.querySelectorAll(".note textarea");
@@ -61,7 +63,7 @@
  } 
 
 
-
+                                            
 
  (
     function() {
@@ -80,7 +82,7 @@
  )()
 
 
- // NAVBAR
+                                                // NAVBAR RESPONSIVE
 
     const menuBtn = document.querySelector(".menu-icon span");
     const searchBtn = document.querySelector(".search-icon");
@@ -105,6 +107,6 @@
       form.classList.add("active");
       searchBtn.classList.add("hide");
       cancelBtn.classList.add("show");
-    }
+}
 
 
