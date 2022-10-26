@@ -14,7 +14,7 @@ body{
     background-size: auto,400px 400px;
     background-attachment: fixed; 
     overflow-x: hidden;
-    min-width: 40vh;
+    min-width:42vh;
   
 }
 /* NAVBAR */
@@ -82,12 +82,12 @@ ul li{
     transition: 0.5s;
   }
 #NewNote:hover{
-    padding-right: 150px;
+    padding-right: 160px;
     padding-left:8px;
   }
 #NewNote:hover:after {
     opacity: 1;
-    right: 20px;
+    right: 15px;
   }
 
 /* NEW NOTE */
@@ -143,7 +143,7 @@ ul li{
 #mainsection {
     width: 100%;
     min-height: 100vh;
-    min-width: 44vh;
+    min-width: 42vh;
     padding-top: 75px;
     display: flex;
     flex-wrap: wrap;
