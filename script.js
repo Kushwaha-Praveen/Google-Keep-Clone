@@ -32,13 +32,12 @@ const NewNote = document.querySelector("#NewNote")
 const mainsection = document.querySelector("#mainsection")
 
 
-//   NOTE BUTTON WORKING
 
 //  ADDING NEW NOTE
 
 const New = (text = "") => {
 
-  const note = document.createElement("div");
+  const note = document.createElement("div");                         //DOM for adding new note
   note.classList.add("note")
   note.innerHTML = `
 <div class="tool" >
@@ -54,34 +53,34 @@ const New = (text = "") => {
   note.querySelector(".trash").addEventListener(
     "click",
     function() {
-      note.remove() //DELETING A NOTE
-      saving()
+      note.remove()                                                      //DELETING A NOTE
+      saving()                                                           // Saving Note
     }
   )
   note.querySelector(".saveit").addEventListener(
     "click",
     function() {
-      saving()
+      saving()                                                             //Saving note
     }
   )
   note.querySelector("textarea").addEventListener(
-    "focusout",
+    "focusout",                                                           //When you go out of text area
     function() {
-      saving()
+      saving()                                                           //Save note
     }
   )
   mainsection.appendChild(note);
-  saving()
+  saving()                                                               //Saving Note
 }
 //  SAVING A NOTE
 
 const saving = () => {
-  const notes = document.querySelectorAll(".note textarea");
+  const notes = document.querySelectorAll(".note textarea");             //Making Notes key for stooring in Local storage
   //console.log(notes);
-  const data = [];
+  const data = [];                                                      //Object Array
   notes.forEach(
     (note) => {
-      data.push(note.value)
+      data.push(note.value)                                              //Pushing note value to data array
     }
   )
   //console.log(data)
@@ -90,16 +89,17 @@ const saving = () => {
     localStorage.removeItem("notes")
 
   } else {
-    localStorage.setItem("notes", JSON.stringify(data))
+    localStorage.setItem("notes", JSON.stringify(data))                  //Setting value of data to NOTES in form of string
   }
 }
 
 (
-  function() {
-    const lsNotes = JSON.parse(localStorage.getItem("notes"));
-    if (lsNotes === null) {
+  function() {                                                            //Function which automatically run when Page Reload
+    const lsNotes = JSON.parse(localStorage.getItem("notes"));           
+    // console.log(lsNotes)    
+    if (lsNotes === null) {                                                //Adding atleast One note when page is reloaded
       New()
-    } else {
+    } else {                                                             //if there are items in LS then fetch it and store it in note
       lsNotes.forEach(
         (lsNote) => {
           New(lsNote)
@@ -110,12 +110,7 @@ const saving = () => {
 
 
   }
-)()
-
-
-//  let popup = document.getElementById("lsNotes");
-
-
+)()                                                                     //Self called function
 
 NewNote.addEventListener(
   "click",
@@ -124,7 +119,7 @@ NewNote.addEventListener(
 
     const alerting = JSON.parse(localStorage.getItem("notes"));
     //  console.log(alerting.length)
-    for (var i = 0; i < alerting.length; i++) //alert
+    for (var i = 0; i < alerting.length; i++)                            //alert when there are no item in Text area
       if (alerting[i] == "") {
         return alert("Note is Empty! In order to get New Note, Fill the Empty note first.");
       }
@@ -141,9 +136,9 @@ NewNote.addEventListener(
 
 
 const searchbar = () => {
-  const filter = document.getElementById("myinput").value.toUpperCase();
-  const search = JSON.parse(localStorage.getItem("notes"));
-  const string = JSON.stringify(search);
+  const filter = document.getElementById("myinput").value.toUpperCase();            //Search bar input
+  const search = JSON.parse(localStorage.getItem("notes"));                         //Fetch item from Local storage
+  const string = JSON.stringify(search);                                            //Convert object into string
   //consol.log(search)
 
   for (var i = 0; i < string.length; i++) {
