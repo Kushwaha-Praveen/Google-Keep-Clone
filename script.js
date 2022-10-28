@@ -97,8 +97,7 @@
          if(alerting[i] == ""){
              return alert("Note is Empty !! Fill the Note first for adding New Note");
             }
-       
-        New()
+       New()
     }
 
  )
