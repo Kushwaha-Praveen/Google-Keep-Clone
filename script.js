@@ -121,7 +121,7 @@ NewNote.addEventListener(
     //  console.log(alerting.length)
     for (var i = 0; i < alerting.length; i++)                            //alert when there are no item in Text area
       if (alerting[i] == "") {
-        return alert("Note is Empty! In order to get New Note, Fill the Empty note first.");
+        return alert("Note is Empty! In order to get a New Note, Fill the Empty note first.");
       }
     New()
   }
@@ -143,7 +143,7 @@ const searchbar = () => {
 
   for (var i = 0; i < string.length; i++) {
     if (string.toUpperCase().indexOf(filter) > -1) {
-      string.innerHTML = (string.Textcontent).replace(filter, "<mark>filter</mark>")
+     // string.innerHTML = (string.Textcontent).replace(filter, "<mark>filter</mark>")
     } else {
       // string[i].style.display = "none";
     }
