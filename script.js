@@ -1,159 +1,157 @@
-                      // NAVBAR RESPONSIVE
+// NAVBAR RESPONSIVE
 
-    const menuBtn = document.querySelector(".menu-icon span");
-    const searchBtn = document.querySelector(".search-icon");
-    const cancelBtn = document.querySelector(".cancel-icon");
-    const items = document.querySelector(".nav-items");
-    const form = document.querySelector("form");
-    menuBtn.onclick = ()=>{
-      items.classList.add("active");
-      menuBtn.classList.add("hide");
-      searchBtn.classList.add("hide");
-      cancelBtn.classList.add("show");
-    }
-    cancelBtn.onclick = ()=>{
-      items.classList.remove("active");
-      menuBtn.classList.remove("hide");
-      searchBtn.classList.remove("hide");
-      cancelBtn.classList.remove("show");
-      form.classList.remove("active");
-      cancelBtn.style.color = "#ff3d00";
-    }
-    searchBtn.onclick = ()=>{
-      form.classList.add("active");
-      searchBtn.classList.add("hide");
-      cancelBtn.classList.add("show");
+const menuBtn = document.querySelector(".menu-icon span");
+const searchBtn = document.querySelector(".search-icon");
+const cancelBtn = document.querySelector(".cancel-icon");
+const items = document.querySelector(".nav-items");
+const form = document.querySelector("form");
+menuBtn.onclick = () => {
+  items.classList.add("active");
+  menuBtn.classList.add("hide");
+  searchBtn.classList.add("hide");
+  cancelBtn.classList.add("show");
+}
+cancelBtn.onclick = () => {
+  items.classList.remove("active");
+  menuBtn.classList.remove("hide");
+  searchBtn.classList.remove("hide");
+  cancelBtn.classList.remove("show");
+  form.classList.remove("active");
+  cancelBtn.style.color = "#ff3d00";
+}
+searchBtn.onclick = () => {
+  form.classList.add("active");
+  searchBtn.classList.add("hide");
+  cancelBtn.classList.add("show");
 }
 
 
-                        //Local Storage
+//Local Storage
 
 const NewNote = document.querySelector("#NewNote")
- const mainsection = document.querySelector("#mainsection")
- 
- 
-                                        //   NOTE BUTTON WORKING
-
-                                        //  ADDING NEW NOTE
-
-    const New = (text = "") => {
-       
-    const note = document.createElement("div");
-    note.classList.add("note")
-    note.innerHTML = `
-    <div class="tool" >
-         <p class="notehead">Note</p>
-         <i class="saveit fas fa-save"></i>
-         <i class="trash fa-solid fa-xmark"></i> 
-    </div>
-    <textarea id="note_text">${text}</textarea>
-    
-    `;
+const mainsection = document.querySelector("#mainsection")
 
 
-   note.querySelector(".trash").addEventListener(
-        "click",
-        function() {
-            note.remove()   //DELETING A NOTE
-            saving()
-        }
-    )
-    note.querySelector(".saveit").addEventListener(
-        "click",
-        function() {
-            saving()
-        }
-    )
-    note.querySelector("textarea").addEventListener(
-        "focusout",
-        function() {
-            saving()
-        }
-    )
-    mainsection.appendChild(note);
-    saving()
- }
-                                         //  SAVING A NOTE
+//   NOTE BUTTON WORKING
 
- const saving = () => {
-    const notes = document.querySelectorAll(".note textarea");
-  //console.log(notes);
-    const data = [];
-    notes.forEach(
-            (note) => {
-                data.push(note.value)
-            }
-        )
- //console.log(data)
+//  ADDING NEW NOTE
 
-    if (data.length === 0) {
-        localStorage.removeItem("notes")
-      
-    } else {
-        localStorage.setItem("notes", JSON.stringify(data))
-    }
- } 
+const New = (text = "") => {
 
- (
-    function() {
-        const lsNotes = JSON.parse(localStorage.getItem("notes"));
-        if (lsNotes === null) {
-            New()
-        } else {
-            lsNotes.forEach(
-                (lsNote) => {
-                    New(lsNote)
-                }
-            )
-        }
-      //console.log(lsNotes)
-    
-       
-    }
- )()
+  const note = document.createElement("div");
+  note.classList.add("note")
+  note.innerHTML = `
+<div class="tool" >
+<p class="notehead">Note</p>
+<i class="saveit fas fa-save"></i>
+<i class="trash fa-solid fa-xmark"></i>
+</div>
+<textarea id="note_text">${text}</textarea>
 
- 
-//  let popup = document.getElementById("lsNotes");
- 
- 
+`;
 
- NewNote.addEventListener(
+
+  note.querySelector(".trash").addEventListener(
     "click",
-
     function() {
-  
-     const alerting = JSON.parse(localStorage.getItem("notes"));
-      //  console.log(alerting.length)
-        for(var i=0;i<alerting.length;i++)    //alert
-      if(alerting[i] == ""){
-             return alert("Note is Empty! In order to get New Note, Fill the Empty note first.");
-            }
-       New()
+      note.remove() //DELETING A NOTE
+      saving()
     }
-
- )
-
-
-
-
-
-
-
-
- const searchbar = () =>{
-     const filter = document.getElementById("myinput").value.toUpperCase();
-     const search = JSON.parse(localStorage.getItem("notes"));
-      const string = JSON.stringify(search);
-//consol.log(search)
-
-     for(var i=0;i<string.length;i++)
-     {
-         if(string.toUpperCase().indexOf(filter) > -1){
-            string[i].style.display = "";
-        }
-        else{
-            string[i].style.display = "none";
-        }
+  )
+  note.querySelector(".saveit").addEventListener(
+    "click",
+    function() {
+      saving()
     }
- 
-     }
+  )
+  note.querySelector("textarea").addEventListener(
+    "focusout",
+    function() {
+      saving()
+    }
+  )
+  mainsection.appendChild(note);
+  saving()
+}
+//  SAVING A NOTE
+
+const saving = () => {
+  const notes = document.querySelectorAll(".note textarea");
+  //console.log(notes);
+  const data = [];
+  notes.forEach(
+    (note) => {
+      data.push(note.value)
+    }
+  )
+  //console.log(data)
+
+  if (data.length === 0) {
+    localStorage.removeItem("notes")
+
+  } else {
+    localStorage.setItem("notes", JSON.stringify(data))
+  }
+}
+
+(
+  function() {
+    const lsNotes = JSON.parse(localStorage.getItem("notes"));
+    if (lsNotes === null) {
+      New()
+    } else {
+      lsNotes.forEach(
+        (lsNote) => {
+          New(lsNote)
+        }
+      )
+    }
+    //console.log(lsNotes)
+
+
+  }
+)()
+
+
+//  let popup = document.getElementById("lsNotes");
+
+
+
+NewNote.addEventListener(
+  "click",
+
+  function() {
+
+    const alerting = JSON.parse(localStorage.getItem("notes"));
+    //  console.log(alerting.length)
+    for (var i = 0; i < alerting.length; i++) //alert
+      if (alerting[i] == "") {
+        return alert("Note is Empty! In order to get New Note, Fill the Empty note first.");
+      }
+    New()
+  }
+
+)
+
+
+
+
+//SEARCH BAR
+
+
+
+const searchbar = () => {
+  const filter = document.getElementById("myinput").value.toUpperCase();
+  const search = JSON.parse(localStorage.getItem("notes"));
+  const string = JSON.stringify(search);
+  //consol.log(search)
+
+  for (var i = 0; i < string.length; i++) {
+    if (string.toUpperCase().indexOf(filter) > -1) {
+      string.innerHTML = (string.Textcontent).replace(filter, "<mark>filter</mark>")
+    } else {
+      // string[i].style.display = "none";
+    }
+  }
+
+}
