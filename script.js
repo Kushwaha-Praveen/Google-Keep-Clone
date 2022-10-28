@@ -121,11 +121,12 @@ const NewNote = document.querySelector("#NewNote")
     "click",
 
     function() {
+  
      const alerting = JSON.parse(localStorage.getItem("notes"));
       //  console.log(alerting.length)
-        for(var i=0;i<alerting.length;i++)
-         if(alerting[i] == ""){
-             return alert("Note is Empty !! Fill the Note first for adding New Note");
+        for(var i=0;i<alerting.length;i++)    //alert
+      if(alerting[i] == ""){
+             return alert("Note is Empty! In order to get New Note, Fill the Empty note first.");
             }
        New()
     }
@@ -139,17 +140,20 @@ const NewNote = document.querySelector("#NewNote")
 
 
 
+ const searchbar = () =>{
+     const filter = document.getElementById("myinput").value.toUpperCase();
+     const search = JSON.parse(localStorage.getItem("notes"));
+      const string = JSON.stringify(search);
+//consol.log(search)
 
-
-
-// const searchbar = () =>{
-//     const filter = document.getElementById("myinput").value.toUpperCase();
-//     const note = document.getElementsById("mainsection");
-//      const note_text = document.querySelectorAll(".note_text");
-//      const nname = document.getElementsByTagName("textarea");
-//      for(var i=0;i<nname.length;i++){
-//         let match = 
-//      }
-// }
-
-
+     for(var i=0;i<string.length;i++)
+     {
+         if(string.toUpperCase().indexOf(filter) > -1){
+            string[i].style.display = "";
+        }
+        else{
+            string[i].style.display = "none";
+        }
+    }
+ 
+     }
