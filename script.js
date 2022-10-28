@@ -1,27 +1,27 @@
  const NewNote = document.querySelector("#NewNote")
  const mainsection = document.querySelector("#mainsection")
+ 
+ 
                                         //   NOTE BUTTON WORKING
- NewNote.addEventListener(
-    "click",
-    function() {
-        New()
-    }
- )
+
                                         //  ADDING NEW NOTE
 
     const New = (text = "") => {
+       
     const note = document.createElement("div");
     note.classList.add("note")
     note.innerHTML = `
-    <div class="tool">
+    <div class="tool" >
          <p class="notehead">Note</p>
          <i class="saveit fas fa-save"></i>
          <i class="trash fa-solid fa-xmark"></i> 
     </div>
-    <textarea>${text}</textarea>
+    <textarea id="note_text">${text}</textarea>
+    
     `;
 
-    note.querySelector(".trash").addEventListener(
+
+   note.querySelector(".trash").addEventListener(
         "click",
         function() {
             note.remove()   //DELETING A NOTE
@@ -47,23 +47,22 @@
 
  const saving = () => {
     const notes = document.querySelectorAll(".note textarea");
-    console.log(notes);
+  //console.log(notes);
     const data = [];
     notes.forEach(
             (note) => {
                 data.push(note.value)
             }
         )
-        // console.log(data)
+ //console.log(data)
+
     if (data.length === 0) {
         localStorage.removeItem("notes")
+      
     } else {
         localStorage.setItem("notes", JSON.stringify(data))
     }
  } 
-
-
-                                            
 
  (
     function() {
@@ -77,9 +76,34 @@
                 }
             )
         }
-
+      //console.log(lsNotes)
+    
+       
     }
  )()
+
+ 
+//  let popup = document.getElementById("lsNotes");
+ 
+ 
+
+ NewNote.addEventListener(
+    "click",
+
+    function() {
+     const alerting = JSON.parse(localStorage.getItem("notes"));
+      //  console.log(alerting.length)
+        for(var i=0;i<alerting.length;i++)
+         if(alerting[i] == ""){
+             return alert("Note is Empty !! Fill the Note first for adding New Note");
+            }
+       
+        New()
+    }
+
+ )
+
+
 
 
                                                 // NAVBAR RESPONSIVE
@@ -108,5 +132,20 @@
       searchBtn.classList.add("hide");
       cancelBtn.classList.add("show");
 }
+
+
+
+
+
+
+// const searchbar = () =>{
+//     const filter = document.getElementById("myinput").value.toUpperCase();
+//     const note = document.getElementsById("mainsection");
+//      const note_text = document.querySelectorAll(".note_text");
+//      const nname = document.getElementsByTagName("textarea");
+//      for(var i=0;i<nname.length;i++){
+//         let match = 
+//      }
+// }
 
 
