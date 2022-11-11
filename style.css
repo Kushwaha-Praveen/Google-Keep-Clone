@@ -261,7 +261,7 @@ nav{
     outline: 0;
     border-radius: 5px;
     border-radius: 4px;
-    /* background-color: #0059ff; */
+    font-family: 'Montserrat', sans-serif;
     background: linear-gradient(to bottom right, #0059ff 0%, #33ccff 100%);
     border: none;
     color: #fff;
@@ -273,23 +273,28 @@ nav{
     cursor: pointer;
     margin: 0px;
     box-shadow: 0 10px 20px -8px rgba(0, 0, 0,.7);
-
+margin-bottom: 15px;
+margin-right: 15px;
     cursor: pointer;
     transition: 0.5s;
   }
 #NewNote:after {
+  font-family: 'Montserrat', sans-serif;
     content: 'Add Note';
     position: absolute;
+
     opacity: 0;  
     top: 14px;
     right: -20px;
     transition: 0.5s;
   }
 #NewNote:hover{
+  font-family: 'Montserrat', sans-serif;
     padding-right: 160px;
     padding-left:8px;
   }
 #NewNote:hover:after {
+  font-family: 'Montserrat', sans-serif;
     opacity: 1;
     right: 15px;
   }

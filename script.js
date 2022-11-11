@@ -76,7 +76,7 @@ const New = (text = "") => {
 
 const saving = () => {
   const notes = document.querySelectorAll(".note textarea");             //Making Notes key for stooring in Local storage
-  //console.log(notes);
+//console.log(notes);
   const data = [];                                                      //Object Array
   notes.forEach(
     (note) => {
@@ -91,12 +91,13 @@ const saving = () => {
   } else {
     localStorage.setItem("notes", JSON.stringify(data))                  //Setting value of data to NOTES in form of string
   }
+ // console.log(notes)
 }
 
 (
   function() {                                                            //Function which automatically run when Page Reload
-    const lsNotes = JSON.parse(localStorage.getItem("notes"));           
-    // console.log(lsNotes)    
+    const lsNotes = JSON.parse(localStorage.getItem("notes"));
+    // console.log(lsNotes)
     if (lsNotes === null) {                                                //Adding atleast One note when page is reloaded
       New()
     } else {                                                             //if there are items in LS then fetch it and store it in note
